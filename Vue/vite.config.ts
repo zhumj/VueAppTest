@@ -47,7 +47,9 @@ export default defineConfig({
       '@': path.resolve(__dirname, './src'),
       '@a': path.resolve(__dirname, './src/assets'),
       '@c': path.resolve(__dirname, './src/components'),
-      '@v': path.resolve(__dirname, './src/views')
+      '@v': path.resolve(__dirname, './src/views'),
+      '@v_func': path.resolve(__dirname, './src/views/func'),
+      '@v_vant': path.resolve(__dirname, './src/views/vant')
     }
   }
 })

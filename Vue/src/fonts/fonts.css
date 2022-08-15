@@ -1,0 +1,20 @@
+@font-face {
+  font-family: 'STHangKai'; /* 华文行楷 */
+  src: url('STHANGKAI.TTF');
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'SSZH'; /* 时尚中黑 */
+  src: url('SSZH.TTF');
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'NMY'; /* 糯米圆 */
+  src: url('NMY.TTF');
+  font-weight: normal;
+  font-style: normal;
+}

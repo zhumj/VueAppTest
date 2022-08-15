@@ -4,12 +4,27 @@ const routes: Array<RouteRecordRaw> = [
   {
     path: '/',
     name: "index",
-    redirect: "/homeView",
+    redirect: "/home",
   },
   {
-    path: '/homeView',
+    path: '/home',
     name: 'HomeView',
     component: () => import('@v/HomeView.vue'),
+  },
+  {
+    path: '/fonts',
+    name: 'FontsView',
+    component: () => import('@v_func/FontsView.vue'),
+  },
+  {
+    path: '/mourn',
+    name: 'MournView',
+    component: () => import('@v_func/MournView.vue'),
+  },
+  {
+    path: '/cardRotate',
+    name: 'CardRotateView',
+    component: () => import('@v_func/CardRotateView.vue'),
   },
 ];
 

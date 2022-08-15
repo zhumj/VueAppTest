@@ -25,6 +25,12 @@
       ],
       "@v/*": [
         "src/views/*"
+      ],
+      "@v_func/*": [
+        "src/views/func/*"
+      ],
+      "@v_vant/*": [
+        "src/views/vant/*"
       ]
     }
   },
