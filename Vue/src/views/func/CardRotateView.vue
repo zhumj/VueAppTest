@@ -11,10 +11,35 @@
     />
     <div class="container">
       <van-cell-group class="front" :class="isRegister ? 'container-front' : ''" inset>
-        <van-cell title="我是正面，点击试试" clickable @click="isRegister = true" />
+        <van-field label="账号" label-width="3rem" label-class="field_label" :border="false" center>
+          <template #input>
+            <van-field placeholder="请输入账号" style="border: 1px solid #ccc; padding: 5px 10px;" />
+          </template>
+        </van-field>
+        <van-field label="密码" label-width="3rem" label-class="field_label" :border="false" center>
+          <template #input>
+            <van-field placeholder="请输入密码" style="border: 1px solid #ccc; padding: 5px 10px;" />
+          </template>
+        </van-field>
+        <div style="padding: 0 18px 0 18px;">
+          <van-button type="primary" round block>登录</van-button>
+        </div>
+        <div class="register_inquiry">还没账号？<label class="register_label" @click="isRegister = !isRegister">注册</label> 一个吧！</div>
       </van-cell-group>
       <van-cell-group class="reverse" :class="isRegister ? 'container-reverse' : ''" inset>
-        <van-cell title="我是反面，点击试试" clickable @click="isRegister = false" />
+        <van-field label="账号" label-width="3rem" label-class="field_label" :border="false" center>
+          <template #input>
+            <van-field placeholder="请输入账号" style="border: 1px solid #ccc; padding: 5px 10px;" />
+          </template>
+        </van-field>
+        <van-field label="密码" label-width="3rem" label-class="field_label" :border="false" center>
+          <template #input>
+            <van-field placeholder="请输入密码" style="border: 1px solid #ccc; padding: 5px 10px;" />
+          </template>
+        </van-field>
+        <div style="padding: 0 18px 8px 18px;">
+          <van-button type="primary" round block @click="isRegister = !isRegister">注册</van-button>
+        </div>
       </van-cell-group>
     </div>
   </div>
@@ -32,9 +57,24 @@ const onNavLeftClick = () => {
 </script>
 
 <style>
+.field_label {
+  font-size: 16px;
+}
+
+.register_inquiry {
+  color: #646566;
+  font-size: 14px;
+  margin: 8px 0 8px 0;
+}
+.register_label {
+  color: red;
+  font-size: 14px;
+  cursor: pointer;
+  text-decoration: underline;
+}
+
 .container {
   width: 100%;
-  margin-top: 46px;
   position: relative;
   transform-style: preserve-3d;
   display: flex;
@@ -43,7 +83,7 @@ const onNavLeftClick = () => {
 }
 
 .front {
-  height: auto;
+  top: 24px;
   text-align: center;
   position: absolute;
   backface-visibility: hidden;
@@ -52,7 +92,7 @@ const onNavLeftClick = () => {
 
 .reverse {
   width: 100%;
-  height: auto;
+  top: 24px;
   text-align: center;
   position: absolute;
   transform: rotateY(-180deg);
