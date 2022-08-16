@@ -18,7 +18,7 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(mViewBinding.root)
         //实现状态栏图标和文字颜色为暗色
-        ViewCompat.getWindowInsetsController(mViewBinding.root)?.isAppearanceLightStatusBars = true
+        ViewCompat.getWindowInsetsController(mViewBinding.root)?.isAppearanceLightStatusBars = false
 
         mViewBinding.webView.settings.javaScriptEnabled = true //-> 是否开启JS支持
         //系统默认会通过手机浏览器打开网页，为了能够直接通过WebView显示网页，则必须设置

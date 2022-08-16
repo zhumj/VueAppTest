@@ -7,11 +7,25 @@
 </template>
 
 <script setup lang="ts">
-import { onBeforeMount, ref } from "vue";
+import { ref, watch } from "vue";
 import { appStore } from '@/store'
 
 const mAppStore = appStore()
 const font = ref(mAppStore.$state.font)
+
+watch(() => mAppStore.$state.font, (val, _old) => {
+  font.value = val
+})
+// //用 watch 替代下面的监听方法
+// mAppStore.$subscribe(
+//   (mutation, state) => {
+//     const events = mutation.events as any
+//     if (events.key === 'font') {
+//       font.value = state.font
+//     }
+//   },
+//   { detached: false }
+// )
 
 const themeVars = {
   navBarBackgroundColor: '#1989fa',
@@ -20,18 +34,6 @@ const themeVars = {
   navBarIconColor: '#fff',
   navBarTextColor: '#fff',
 };
-
-onBeforeMount(() => {
-  mAppStore.$subscribe(
-    (mutation, state) => {
-      const events = mutation.events as any
-      if (events.key === 'font') {
-        font.value = state.font
-      }
-    },
-    { detached: false }
-  );
-})
 
 </script>
 

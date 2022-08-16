@@ -93,7 +93,11 @@ const fieldMinimumFormatter = (val: any) => {
 }
 
 const onNavLeftClick = () => {
-  router.back()
+  if (isSettings.value) {
+    isSettings.value = false
+  } else {
+    router.back()
+  }
 }
 
 const onRecover = () => {
@@ -151,7 +155,6 @@ const startRandom = () => {
 @import '@/fonts/fonts.css';
 
 .container {
-  width: 100%;
   position: relative;
   transform-style: preserve-3d;
   display: flex;

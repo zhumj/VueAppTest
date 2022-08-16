@@ -52,7 +52,11 @@ import router from "@/router";
 const isRegister = ref(false)
 
 const onNavLeftClick = () => {
-  router.back()
+  if (isRegister.value) {
+    isRegister.value = false
+  } else {
+    router.back()
+  }
 }
 </script>
 
@@ -74,7 +78,6 @@ const onNavLeftClick = () => {
 }
 
 .container {
-  width: 100%;
   position: relative;
   transform-style: preserve-3d;
   display: flex;
@@ -84,6 +87,8 @@ const onNavLeftClick = () => {
 
 .front {
   top: 24px;
+  left: 8px;
+  right: 8px;
   text-align: center;
   position: absolute;
   backface-visibility: hidden;
@@ -91,8 +96,9 @@ const onNavLeftClick = () => {
 }
 
 .reverse {
-  width: 100%;
   top: 24px;
+  left: 8px;
+  right: 8px;
   text-align: center;
   position: absolute;
   transform: rotateY(-180deg);
