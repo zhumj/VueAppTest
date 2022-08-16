@@ -26,6 +26,11 @@ const HOME_DATA = [
         path: '/cardRotate',
         name: 'CardRotateView'
       },
+      {
+        label: '随机点名',
+        path: '/randomRollCall',
+        name: 'RandomRollCallView'
+      }
     ]
   },
   {

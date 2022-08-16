@@ -26,6 +26,11 @@ const routes: Array<RouteRecordRaw> = [
     name: 'CardRotateView',
     component: () => import('@v_func/CardRotateView.vue'),
   },
+  {
+    path: '/randomRollCall',
+    name: 'RandomRollCallView',
+    component: () => import('@v_func/RandomRollCallView.vue'),
+  }
 ];
 
 const router = createRouter({
