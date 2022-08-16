@@ -682,6 +682,11 @@ vite@^3.0.0:
   optionalDependencies:
     fsevents "~2.3.2"
 
+vue-cropper@^1.0.5:
+  version "1.0.5"
+  resolved "https://registry.npmmirror.com/vue-cropper/-/vue-cropper-1.0.5.tgz#eddc55a2165d721fa795c14d5d38117315904650"
+  integrity sha512-D4XXdqWmMWRLOIV9LIh7/mkH6OBOMQDFbRjwntkxmAtxOtwpC9U5ZZ6lSXw5F5cbd4g8znDjk6MuCwIL+fZSrA==
+
 vue-demi@*:
   version "0.13.6"
   resolved "https://registry.npmmirror.com/vue-demi/-/vue-demi-0.13.6.tgz#f9433cbd75e68a970dec066647f4ba6c08ced48f"

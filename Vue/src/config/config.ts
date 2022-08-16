@@ -30,6 +30,11 @@ const HOME_DATA = [
         label: '随机点名',
         path: '/randomRollCall',
         name: 'RandomRollCallView'
+      },
+      {
+        label: '图片裁剪',
+        path: '/imageCropper',
+        name: 'ImageCropperView'
       }
     ]
   },
