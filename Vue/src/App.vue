@@ -24,7 +24,8 @@ const themeVars = {
 onBeforeMount(() => {
   mAppStore.$subscribe(
     (mutation, state) => {
-      if (mutation.events.key === 'font') {
+      const events = mutation.events as any
+      if (events.key === 'font') {
         font.value = state.font
       }
     },

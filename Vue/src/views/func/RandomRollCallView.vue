@@ -78,7 +78,7 @@ const selectedName = ref<string>("选中有奖哦");
 const selectedIndex = ref<number>(-1);
 const startDisabled = ref<boolean>(false);
 const selectCount = ref<number>(1);
-let timer: number;
+let timer: any;
 
 const fieldLimitSpacesFormatter = (val: any) => {
   return val.replace(/\s+/g, "")
