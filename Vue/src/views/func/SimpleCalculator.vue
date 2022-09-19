@@ -76,13 +76,13 @@ const onNavLeftClick = () => {
 
 function onItemClick(item: string) {
   const value = inputList.value
-  if (value.length == 1 && value[0] == '0') {
+  const valueLength = value.length
+  const lastValue = value[valueLength-1]
+  if (valueLength == 1 && lastValue == '0') {
     if (item == ')' || item == '+' || item == '-' || item == '*' || item == '/' || item == "=") {
         return
     }
   }
-  const valueLength = value.length
-  const lastValue = value[valueLength-1]
   if (lastValue == '(') {
     if (item == '(' || item == ')' || item == '+' || item == '-' || item == '*' || item == '/' || item == "=") {
         return
@@ -122,13 +122,13 @@ function onItemClick(item: string) {
     }
     inputValue.value = inputList.value.join('')
   } else if (item == "=") {
-    outputValue.value = inputValue.value
+    outputValue.value = inputValue.value+item
     inputValue.value = calculate()
     inputList.value.length = 0
     inputList.value.push(inputValue.value)
   } else {
     if(item == '(') {
-      if (lastValue != '/' && lastValue != '*' && lastValue != '-' && lastValue != '+') {
+      if (!(valueLength == 1 && lastValue == '0') && lastValue != '/' && lastValue != '*' && lastValue != '-' && lastValue != '+') {
         return
       }
     }
@@ -150,7 +150,7 @@ function onItemClick(item: string) {
         return
       }
     }
-    if (inputValue.value == '0' && item != '.') {
+    if (valueLength == 1 && lastValue == '0' && item != '.') {
       inputList.value = [item]
     } else {
       if(lastValue == '(' || lastValue == ')' || lastValue == '/' || lastValue == '*' || lastValue == '-' || lastValue == '+') {
