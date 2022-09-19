@@ -32,6 +32,11 @@ const routes: Array<RouteRecordRaw> = [
     component: () => import('@v_func/RandomRollCallView.vue'),
   },
   {
+    path: '/simpleCalculator',
+    name: 'SimpleCalculator',
+    component: () => import('@v_func/SimpleCalculator.vue'),
+  },
+  {
     path: '/imageCropper',
     name: 'ImageCropperView',
     component: () => import('@v_func/ImageCropperView.vue'),

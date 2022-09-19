@@ -32,6 +32,11 @@ const HOME_DATA = [
         name: 'RandomRollCallView'
       },
       {
+        label: '简单的计算器(未完)',
+        path: '/simpleCalculator',
+        name: 'SimpleCalculator'
+      },
+      {
         label: '图片裁剪',
         path: '/imageCropper',
         name: 'ImageCropperView'
