@@ -74,6 +74,10 @@ const onNavLeftClick = () => {
   router.back()
 }
 
+/**
+ * 点击Item输入
+ * @param item 
+ */
 function onItemClick(item: string) {
   const value = inputList.value
   const valueLength = value.length
@@ -167,6 +171,9 @@ function onItemClick(item: string) {
   }
 }
 
+/**
+ * 点击“=”号时的计算
+ */
 function calculate(): string {
   return '1'
 }
