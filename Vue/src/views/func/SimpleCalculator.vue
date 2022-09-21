@@ -1,7 +1,7 @@
 <template>
   <div>
     <van-nav-bar
-      title="简单的计算器(未完)"
+      title="简单的计算器"
       left-text="返回"
       :border="false"
       left-arrow
@@ -40,6 +40,7 @@
 <script lang="ts" setup>
 import { ref } from "vue";
 import router from "@/router";
+import BigNumber from "bignumber.js";
 
 const themeVars = {
   fieldInputTextColor: '#a9a9a9'
@@ -62,6 +63,16 @@ const items = [
   '9',
   '-',
   '0',
+  '.',
+  '=',
+  '+'
+]
+const operatorList = [
+  '(',
+  ')',
+  '/',
+  '*',
+  '-',
   '.',
   '=',
   '+'
@@ -128,8 +139,7 @@ function onItemClick(item: string) {
   } else if (item == "=") {
     outputValue.value = inputValue.value+item
     inputValue.value = calculate()
-    inputList.value.length = 0
-    inputList.value.push(inputValue.value)
+    inputList.value.splice(0, valueLength, inputValue.value)
   } else {
     if(item == '(') {
       if (!(valueLength == 1 && lastValue == '0') && lastValue != '/' && lastValue != '*' && lastValue != '-' && lastValue != '+') {
@@ -175,7 +185,92 @@ function onItemClick(item: string) {
  * 点击“=”号时的计算
  */
 function calculate(): string {
-  return '1'
+  const suffixExpression = toSuffixExpression(inputList.value)
+  const nums: any = []
+  for(var i = 0; i < suffixExpression.length; i++) {
+    const item = suffixExpression[i]
+    if (item == '+' || item == '-' || item == '*' || item == '/') {
+      const num1 = BigNumber(nums.pop())
+      const num2 = BigNumber(nums.pop())
+      var result = 0
+      if (item == '+') {
+        result = num2.plus(num1).toNumber()
+      } else if (item == '-') {
+        result = num2.minus(num1).toNumber()
+      } else if (item == '*') {
+        result = num2.multipliedBy(num1).toNumber()
+      } else if (item == '/') {
+        result = num2.dividedBy(num1).toNumber()
+      }
+      nums.push(result)
+    } else {
+      nums.push(parseFloat(item))
+    }
+  }
+  return ''+nums.pop()
+}
+
+/**
+ * 中缀表达式转后缀表达式：
+ * ['1', '+', '2', '*', '(', '1', '+', '1', ')', '-', '1'] 
+ * => 
+ * ['1', '2', '1', '1', '+', '*', '+', '1', '-']
+ * @param dataList 
+ */
+function toSuffixExpression(dataList: string[]) {
+  const suffixExpression: any[] = []
+  const stack: any[] = []
+  for (let i = 0; i < dataList.length; i++) {
+    const item = dataList[i];
+    if (item == '+' || item == '-' || item == '*' || item == '/') {
+      if (stack.length == 0) {
+        stack.push(item)
+      } else if (operatorPriority(item) > operatorPriority(stack[stack.length-1])) {
+        stack.push(item)
+      } else {
+        while (true) {
+          if (stack.length == 0) {
+            stack.push(item)
+            break
+          } else if (operatorPriority(item) > operatorPriority(stack[stack.length-1])) {
+            stack.push(item)
+            break
+          }
+          suffixExpression.push(stack.pop())
+        }
+      }
+    } else if (item == '(') {
+      stack.push(item)
+    } else if (item == ')') {
+      while (true) {
+        if (stack[stack.length-1] == '(') {
+          stack.pop()
+          break
+        }
+        suffixExpression.push(stack.pop())
+      }
+    } else {
+      suffixExpression.push(item)
+    }
+  }
+  while(stack.length > 0) {
+    suffixExpression.push(stack.pop())
+  }
+  return suffixExpression
+}
+
+/**
+ * 获取运算符优先级
+ * @param operator 
+ */
+function operatorPriority(operator: string) {
+  if (operator == '+' || operator == '-') {
+    return 1
+  } else if (operator == '*' || operator == '/') {
+    return 2
+  } else {
+    return 0
+  }
 }
 </script>
 

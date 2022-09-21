@@ -9,6 +9,7 @@
     "preview": "vite preview"
   },
   "dependencies": {
+    "bignumber.js": "^9.1.0",
     "pinia": "^2.0.17",
     "vant": "^3.5.4",
     "vue": "^3.2.37",
